@@ -882,27 +882,35 @@ ul{
 /* Mobile  */
 
 @media (max-width: 768px) {
-    .navbar {min-height: 65px;}
+    .navbar {
+        min-height: 65px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;}
 
     /* Mobile navigation  */
 
     .menu-toggle {
         display: block;
-        background: none;
+        background: transparent;
         border: none;
         font-size: 24px;
         cursor: pointer;
+        margin-right: 0px;
     }
 
     .nav-menu {
         position: absolute;
-        top: 65px;
+        top: 100%;
         left: 0;
         width: 100%;
         display: none;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
+        align-items: center;
+        padding: 20px 0;
         background: var(--white-color);
         border-bottom: 1px solid var(--border-color);
         box-shadow: var(--shadow-medium);
