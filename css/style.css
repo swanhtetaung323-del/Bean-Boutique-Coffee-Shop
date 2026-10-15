@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css);
-@import url(https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css);
+/* @import url(https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css); */
 @import url(https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css);
 @import url('https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css');
 @import url('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css');
@@ -1317,8 +1317,8 @@ ul{
 .coffee-detail {
     position: relative;
     width: 100%;
-    max-width: 650px;
-    max-height: 90vh;
+    max-width: 500px;
+    /* max-height: 90vh; */
     overflow-y: auto;
     background: var(--white-color);
     border-radius: 16px;
@@ -1326,6 +1326,7 @@ ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    align-items: center;
 }
 
 /* CLOSE BUTTON */
@@ -1864,28 +1865,36 @@ ul{
 
 
 
+
 /* =========================================================
    EQUIPMENT PAGE
 ========================================================= */
 
-
 .equipment-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
     gap: 30px;
 }
 
 .equipment-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
     overflow: hidden;
+
     background-color: var(--white-color);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .equipment-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
 }
 
@@ -1897,6 +1906,7 @@ ul{
 .equipment-image {
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .equipment-image img {
@@ -1904,11 +1914,13 @@ ul{
     width: 100%;
     height: 250px;
     object-fit: cover;
+    object-position: center;
+
     transition: transform 0.5s ease;
 }
 
 .equipment-card:hover .equipment-image img {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
 
@@ -1917,12 +1929,18 @@ ul{
 ========================================================= */
 
 .equipment-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
     padding: 25px;
 }
 
 .equipment-type {
     display: inline-block;
+    align-self: flex-start;
     margin-bottom: 8px;
+
     color: var(--secondary-color);
     font-size: 13px;
     font-weight: 700;
@@ -1931,14 +1949,19 @@ ul{
 }
 
 .equipment-content h3 {
-    margin-bottom: 12px;
+    margin: 0 0 12px;
+
     color: var(--dark-color);
     font-family: "Playfair Display", serif;
     font-size: 24px;
+    line-height: 1.35;
+
+    overflow-wrap: anywhere;
 }
 
 .equipment-content > p {
-    margin-bottom: 20px;
+    margin: 0 0 20px;
+
     color: var(--text-color);
     font-size: 15px;
     line-height: 1.7;
@@ -1952,6 +1975,7 @@ ul{
 .equipment-tip {
     padding: 15px;
     margin-bottom: 20px;
+
     border-left: 3px solid var(--secondary-color);
     background-color: var(--light-color);
 }
@@ -1959,8 +1983,10 @@ ul{
 .equipment-tip strong {
     display: block;
     margin-bottom: 8px;
+
     color: var(--dark-color);
     font-size: 14px;
+    line-height: 1.5;
 }
 
 .equipment-tip strong i {
@@ -1970,9 +1996,12 @@ ul{
 
 .equipment-tip p {
     margin: 0;
+
     color: var(--text-color);
     font-size: 14px;
     line-height: 1.6;
+
+    overflow-wrap: anywhere;
 }
 
 
@@ -1984,8 +2013,12 @@ ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 12px;
+
     padding-top: 18px;
+    margin-top: auto;
+
     border-top: 1px solid var(--border-color);
 }
 
@@ -1993,6 +2026,7 @@ ul{
     color: var(--primary-color);
     font-size: 24px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 
@@ -2002,9 +2036,33 @@ ul{
 
 .add-equipment {
     padding: 11px 17px;
+
     border: none;
+    border-radius: 6px;
+
     font-size: 14px;
+    line-height: 1.4;
     white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.add-equipment:hover {
+    transform: translateY(-1px);
+}
+
+.add-equipment:active {
+    transform: translateY(0);
+}
+
+.add-equipment:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 3px;
 }
 
 
@@ -2016,6 +2074,15 @@ ul{
 
     .equipment-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .equipment-content {
+        padding: 22px;
+    }
+
+    .equipment-content h3 {
+        font-size: 22px;
     }
 
 }
@@ -2028,15 +2095,32 @@ ul{
 @media (max-width: 768px) {
 
     .equipment-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
     }
 
     .equipment-image img {
-        height: 230px;
+        height: 210px;
+    }
+
+    .equipment-content {
+        padding: 18px;
     }
 
     .equipment-content h3 {
+        font-size: 20px;
+    }
+
+    .equipment-price {
         font-size: 22px;
+    }
+
+    .equipment-footer {
+        align-items: stretch;
+    }
+
+    .add-equipment {
+        white-space: normal;
     }
 
 }
@@ -2047,6 +2131,15 @@ ul{
 ========================================================= */
 
 @media (max-width: 500px) {
+
+    .equipment-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .equipment-image img {
+        height: 230px;
+    }
 
     .equipment-content {
         padding: 20px;
@@ -2059,6 +2152,7 @@ ul{
     .equipment-footer {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
     }
 
     .equipment-price {
@@ -2067,9 +2161,37 @@ ul{
 
     .add-equipment {
         width: 100%;
+        white-space: normal;
     }
 
 }
+
+
+/* =========================================================
+   ACCESSIBILITY - REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .equipment-card,
+    .equipment-image img,
+    .add-equipment {
+        transition: none;
+    }
+
+    .equipment-card:hover,
+    .add-equipment:hover,
+    .add-equipment:active {
+        transform: none;
+    }
+
+    .equipment-card:hover .equipment-image img {
+        transform: none;
+    }
+
+}
+
+
 
 
 /* =========================================================

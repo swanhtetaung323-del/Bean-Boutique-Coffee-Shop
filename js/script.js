@@ -168,3 +168,11 @@ registerButtons.forEach(function(button) {
     button.addEventListener("click", function() {
         const eventName = button.getAttribute("data-event");
         Toastify({text: "Registration successful for " + eventName + "!",duration: 3000,gravity: "top",position: "center"}).showToast();});});
+const planButtons = document.querySelectorAll('.subscription-btn');
+planButtons.forEach(function (button) {
+  button.addEventListener('click', function () {planButtons.forEach(function (btn) {btn.textContent = 'Choose Plan';btn.classList.remove('selected');});
+    this.textContent = 'Selected';
+    this.classList.add('selected');
+    const planName = this.getAttribute('data-plan');
+    const planText = document.getElementById('selected-plan-text');
+    if (planText) {planText.textContent = 'You have selected the ' + planName + ' plan.';}});});
